@@ -40,9 +40,12 @@ export class RupService {
         })));
       }
       
-      // Filter data based on kd_satker (exact match)
+      // Filter data based on kd_satker, status_aktif_rup, and status_umumkan_rup
       const filteredData = allData.filter(item => {
-        return item.kd_satker && item.kd_satker.toString() === kd_satker;
+        return item.kd_satker && 
+               item.kd_satker.toString() === kd_satker &&
+               item.status_aktif_rup === true &&
+               item.status_umumkan_rup === "Terumumkan";
       });
       
       console.log(`Filtered records for kd_satker ${kd_satker}: ${filteredData.length}`);
